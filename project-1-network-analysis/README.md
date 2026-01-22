@@ -1,43 +1,48 @@
 # Phase 1: Network Analysis of Healthcare Delivery Systems
 
-## Executive Summary
+Uncovering critical infrastructure in healthcare networks through computational analysis of Electronic Health Record (EHR) data.
 
-This study applies computational network analysis to Electronic Health Records (EHR) data to identify critical infrastructure components in multi-disease healthcare delivery. Using graph-theoretic methods on 262,833 patient care transitions across 120 healthcare facilities, we quantified facility importance, detected care coordination bottlenecks, and revealed modular organizational structures.
+---
 
-## Research Objectives
+## 🎯 Overview
 
-1. **Hub Identification**: Quantify facility centrality using PageRank and betweenness metrics to identify universal coordination sites serving multiple chronic disease populations
-2. **Care Pathway Analysis**: Characterize disease-specific patient journey patterns through visit frequency, pathway complexity, and care continuity metrics
-3. **Community Detection**: Apply Louvain modularity optimization to uncover functional clustering and bridge sites connecting care subsystems
+This project analyzes **262,833 patient care transitions** across **120 healthcare facilities** to understand how patients with chronic diseases navigate through the healthcare system. By applying network analysis techniques to EHR data, we identify critical hub facilities, care coordination patterns, and modular community structures.
 
-## Methodology
+### Diseases Analyzed
+- **Diabetes Mellitus**
+- **Cardiovascular Disease** (Heart Disease)
+- **Cancer**
+- **Chronic Kidney Disease (CKD)**
 
-### Data Source
-- **Dataset**: De-identified EHR data from hospital network
-- **Population**: 1,017 patients with chronic conditions (Diabetes Mellitus, Cardiovascular Disease, Cancer, Chronic Kidney Disease)
-- **Observation Period**: Multi-year longitudinal records
-- **Care Transitions**: 262,833 documented patient visits across 120 distinct care facilities
+---
 
-### Network Construction
-- **Nodes**: Healthcare facilities (care sites)
-- **Edges**: Directed patient transitions between facilities
-- **Edge Weights**: Frequency of patient transfers between site pairs
-- **Temporal Window**: 365-day active care episode tracking
+## 🔬 Research Question
 
-### Analytical Methods
-- **PageRank Centrality**: Recursive importance scoring via referral patterns
-- **Betweenness Centrality**: Bridge facility identification through shortest-path analysis
-- **Louvain Algorithm**: Community detection via modularity optimization (Q=0.67)
-- **Pathway Metrics**: Visit frequency, site diversity, inter-visit intervals
+> *"How do patient care pathways and network structures differ across chronic diseases, and what are the critical infrastructure elements—universal hubs, bridges, and communities—that support multi-disease care coordination?"*
 
-## Key Findings
+---
+
+## 🛠️ Tech Stack
+
+| Category | Tools |
+|----------|-------|
+| **Language** | Python 3.8+ |
+| **Data Processing** | Pandas, NumPy, SQL |
+| **Network Analysis** | NetworkX 2.8 |
+| **Visualization** | Plotly, Pyvis (Interactive HTML) |
+| **Algorithms** | PageRank, Betweenness Centrality, Louvain Community Detection |
+
+---
+
+## 📊 Key Findings
 
 ### Universal Hub Infrastructure
-- **8 universal hub sites** identified serving all four disease populations
+- Identified **8 universal hub facilities** that serve all four disease cohorts
 - These hubs handle **83.7% of inter-site patient transitions** despite representing only **6.7% of facilities**
 - Hub sites: Primary Care, Internal Medicine, Cardiology, Cardiovascular Medicine, Laboratory Services
 
 ### Disease-Specific Patterns
+
 | Disease | Avg Sites/Patient | Avg Inter-visit Interval | Network Density |
 |---------|-------------------|-------------------------|-----------------|
 | Chronic Kidney Disease | 16.1 | 8.2 days | 0.0194 |
@@ -46,45 +51,122 @@ This study applies computational network analysis to Electronic Health Records (
 | Diabetes | 13.8 | 10.2 days | 0.0180 |
 
 ### Community Structure
-- **23 functional communities** detected via Louvain algorithm
-- **Modularity score Q = 0.67** indicating strong community organization
-- **34 bridge sites** identified with high betweenness centrality (μ=0.082)
+- Discovered **23 functional communities** via Louvain algorithm (modularity Q=0.67)
+- Identified **34 bridge facilities** with high betweenness centrality (μ=0.082)
 - Top bridges: Internal Medicine, Laboratory Services, Cardiology
 
-## Clinical Implications
-
+### Clinical Implications
 1. **Capacity Planning**: Universal hubs represent critical bottlenecks requiring strategic resource allocation
 2. **Care Coordination**: Bridge sites are optimal intervention points for care navigator programs
 3. **Comorbidity Management**: Network overlap between cardiac and renal communities suggests integrated care clinic opportunities
 
-## Technical Implementation
+---
 
-### Technologies
-- **Python 3.8+**: Primary programming environment
-- **NetworkX 2.8**: Graph construction and analysis
-- **Pandas**: Data preprocessing and manipulation
-- **Plotly**: Interactive network visualizations
-- **NumPy/SciPy**: Numerical computations
-
-### Reproducibility
-All analysis code is documented in Jupyter notebooks with inline explanations. Network visualizations are provided as standalone HTML files for interactive exploration.
-
-## Outputs
-
-- `Network_Analysis_CODE.ipynb`: Complete analysis pipeline with documentation
-- Disease-specific network visualizations (HTML interactive graphs):
-  - `Cancer_Graph.html`
-  - `Chronic_Kidney_Disease_Graph.html`
-  - `Diabetes_Graph.html`
-  - `HeartDisease_Graph.html`
-- `Multi_Disease_Interactive_Graph.html`: Integrated 120-site network with disease coverage overlay
-- `Network_Communities.html`: Community structure visualization with bridge identification
-
-## References
-
-Full methodology and results documented in research report (see `/reports` directory).
-
-## Author
-
-Conducted as part of Network Analysis and Machine Learning coursework at University of South Florida, Department of Computer Science.
+## 📁 Project Structure
 ```
+project-1-network-analysis/
+├── README.md                                # This file
+├── Network_Analysis_CODE.ipynb              # Main analysis notebook
+├── Cancer_Graph.html                        # Disease-specific visualizations
+├── Chronic_Kidney_Disease_Graph.html
+├── Diabetes_Graph.html
+├── HeartDisease_Graph.html
+├── Multi_Disease_Interactive_Graph.html     # Integrated network
+└── Network_Communities.html                 # Community structure
+```
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Mahendra-logics/healthcare-network-analysis.git
+cd healthcare-network-analysis/project-1-network-analysis
+```
+
+### 2. Install dependencies
+```bash
+pip install pandas numpy networkx plotly pyvis
+```
+
+### 3. Open the Jupyter notebook
+```bash
+jupyter notebook Network_Analysis_CODE.ipynb
+```
+
+### 4. View interactive visualizations
+Open the HTML files in any web browser to explore:
+- Disease-specific care networks
+- Multi-disease network overlay  
+- Community structures and hub facilities
+
+---
+
+## 🎨 Interactive Visualizations
+
+The interactive HTML visualizations allow exploration of:
+- **Node sizes**: Proportional to patient traffic volume
+- **Edge thickness**: Represents transition frequency
+- **Colors**: Disease coverage (universal hubs vs. specialized facilities)
+- **Communities**: Functional clustering patterns
+
+Simply open any `.html` file in a web browser to interact with the network graphs.
+
+---
+
+## 📈 Methodology
+
+### Data Source
+- **Dataset**: De-identified EHR data from hospital network
+- **Population**: 1,017 patients with chronic conditions
+- **Observation Period**: Multi-year longitudinal records
+- **Care Transitions**: 262,833 documented patient visits
+
+### Network Construction
+- **Nodes**: Healthcare facilities (care sites)
+- **Edges**: Directed patient transitions between facilities
+- **Edge Weights**: Frequency of patient transfers
+- **Temporal Window**: 365-day active care episode tracking
+
+### Analytical Methods
+- **PageRank Centrality**: Recursive importance scoring via referral patterns
+- **Betweenness Centrality**: Bridge facility identification through shortest-path analysis  
+- **Louvain Algorithm**: Community detection via modularity optimization
+- **Pathway Metrics**: Visit frequency, site diversity, inter-visit intervals
+
+---
+
+## 👥 Authors
+
+**Bala Mahendra Pothabathula**  
+M.S. Computer Science | University of South Florida  
+[LinkedIn](#) | [Email](mailto:pothabathula@usf.edu)
+
+**Collaborators:**  
+- Karthikeya Moturi  
+- Gowtham Sai Chimmana
+
+*This project was completed as part of CIS 4930/CAI 5155 (Network Analysis & ML with Graphs) at USF.*
+
+---
+
+## 📄 Related Work
+
+This analysis serves as the foundation for **Phase 2**, which applies Graph Neural Networks (GNNs) for multimorbidity risk prediction using patient similarity networks.
+
+📂 [View Phase 2: GNN Prediction →](../project-2-gnn-prediction/)
+
+---
+
+## 📜 License
+
+This project is for educational purposes. Please cite appropriately if referencing this work.
+
+---
+
+## 🔗 Links
+
+- [Main Repository](../)
+- [Phase 2: GNN Prediction](../project-2-gnn-prediction/)
+- [Full Research Report](../reports/)
