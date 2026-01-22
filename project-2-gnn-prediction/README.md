@@ -239,7 +239,7 @@ Research conducted as part of Machine Learning and Network Analysis coursework a
 
 If you use this work, please cite:
 ```
-Moturi, Karthikeya, Pothabathula, Bala Mahendra, Chimmana, Gowtham Sai (2025). 
+Moturi Karthikeya, Pothabathula Bala Mahendra, Chimmana Gowtham Sai (2025). 
 A Graph Neural Network Framework for Multimorbidity Risk Stratification 
 and Patient-Peer Care Site Recommendation. 
 University of South Florida, Department of Computer Science.
